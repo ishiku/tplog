@@ -1,0 +1,18 @@
+function(read_project_version)
+    FILE(READ "VERSION" VER)
+    string(REGEX REPLACE "^v" "" CLEAN_VER "${VER}")
+    if(CLEAN_VER MATCHES "^([0-9]+)\\.([0-9]+)\\.([0-9]+)(-.*)?$")
+
+        set(PROJECT_VERSION_MAJOR ${CMAKE_MATCH_1})
+        set(PROJECT_VERSION_MAJOR ${CMAKE_MATCH_1} PARENT_SCOPE)
+        set(PROJECT_VERSION_MINOR ${CMAKE_MATCH_2})
+        set(PROJECT_VERSION_MINOR ${CMAKE_MATCH_2} PARENT_SCOPE)
+        set(PROJECT_VERSION_PATCH ${CMAKE_MATCH_3})
+        set(PROJECT_VERSION_PATCH ${CMAKE_MATCH_3} PARENT_SCOPE)
+
+        set(PROJECT_VERSION "${CMAKE_MATCH_1}.${CMAKE_MATCH_2}.${CMAKE_MATCH_3}") 
+        set(PROJECT_VERSION "${CMAKE_MATCH_1}.${CMAKE_MATCH_2}.${CMAKE_MATCH_3}" PARENT_SCOPE)
+    else()
+        message(WARNING "Version '${CLEAN_VER}' does not match semver format")
+    endif()
+endfunction()

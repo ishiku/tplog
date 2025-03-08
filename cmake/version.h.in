@@ -1,0 +1,14 @@
+// Copyright(c) 2025, Alexey Kamenew.
+// Distributed under the MIT License (http://opensource.org/licenses/MIT)
+
+#ifndef TPLOG_VERSION_H_
+#define TPLOG_VERSION_H_
+
+#define TPLOG_VERSION_MAJOR ${PROJECT_VERSION_MAJOR}
+#define TPLOG_VERSION_MINOR ${PROJECT_VERSION_MINOR}
+#define TPLOG_VERSION_PATCH ${PROJECT_VERSION_PATCH}
+
+#define TPLOG_TO_VERSION(major, minor, patch) (major * 10000 + minor * 100 + patch)
+#define TPLOG_VERSION TPLOG_TO_VERSION(TPLOG_VERSION_MAJOR, TPLOG_VERSION_MINOR, TPLOG_VERSION_PATCH)
+
+#endif // TPLOG_VERSION_H_
